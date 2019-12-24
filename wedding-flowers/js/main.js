@@ -19,8 +19,27 @@ Table of Contents:
 10. Parallax
 */
 
+function startTimer(duration) {
+	var timer = duration, days, hours, minutes, seconds;
+	setInterval(function () {
+		days = parseInt(timer / (60*60*24), 10)
+		hours = parseInt((timer - days*24*60*60)/ (60*60), 10)
+		minutes = parseInt((timer  - days*24*60*60 - hours*60*60) / 60, 10)
+		seconds = parseInt((timer - days*24*60*60 - hours*60*60 - minutes*60), 10) % 60
+
+		document.getElementById('days').textContent = days;
+		document.getElementById('hours').textContent = hours;
+		document.getElementById('minutes').textContent = minutes;
+		document.getElementById('seconds').textContent = seconds;
+		if (--timer < 0) {
+			timer = duration;
+		}
+	}, 1000);
+}
+
 ;(function () {
 	'use strict';
+
 	/* 1. Windows on Load
 	====================*/
 	$(window).on('load', function() {
@@ -30,6 +49,7 @@ Table of Contents:
 			percentPosition: true,
 			columnWidth: '.grid-sizer'
 		});
+		startTimer((new Date('2020-01-04') - new Date())/1000);
 	});
 
 	/* 2. Windows on Scroll
