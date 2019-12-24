@@ -49,7 +49,7 @@ function startTimer(duration) {
 			percentPosition: true,
 			columnWidth: '.grid-sizer'
 		});
-		startTimer((new Date('2020-01-04') - new Date())/1000);
+		startTimer((new Date('2020-01-04 11:00:00') - new Date())/1000);
 	});
 
 	/* 2. Windows on Scroll
